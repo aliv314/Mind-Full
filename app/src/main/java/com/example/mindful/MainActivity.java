@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
 
     ImageButton btStartStop;
 
-
     TextView txFocus;
     TextView txStartStop;
 
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     //modifier between 1-10
                     double modifier = millisInFuture;
-                    modifier *= r.nextInt(20)/10;
+                    modifier *= (double)r.nextInt(20) /10;
                     startTimer((long)modifier);
                 }
             }
@@ -59,17 +58,15 @@ public class MainActivity extends AppCompatActivity {
 
     protected void startTimer(long modifier){
         startUpdate();
-        timer = new CountDownTimer(modifier, 1000) {
+        timerRunning = true;
+        new CountDownTimer(modifier, 1000) {
             @Override
             public void onTick(long l) {
                 //no actions on tick
             }
-
             @Override
             public void onFinish() {
-
-
-
+                timerRunning = false;
                 stopUpdate();
             }
         }.start();
@@ -78,14 +75,13 @@ public class MainActivity extends AppCompatActivity {
     protected void stopTimer(){
 
         stopUpdate();
-
     }
 
     protected void startUpdate(){
         txFocus.setText("Focusing...");
         txStartStop.setText("Stop");
-
     }
+
     protected void stopUpdate(){
         txFocus.setText("Focus");
         txStartStop.setText("Start");

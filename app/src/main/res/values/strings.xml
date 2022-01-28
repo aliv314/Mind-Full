@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mindful</string>
+    <string name="txfocus">Focus</string>
+    <string name="txstart">Start</string>
+    <string name="btStart">button</string>
+
 </resources>

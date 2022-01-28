@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
+        android:contentDescription="@string/btStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -22,27 +23,26 @@
         app:srcCompat="@drawable/start_circle" />
 
     <TextView
-        android:id="@+id/text_Start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/ZCOOL"
-        android:text="Start"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button_start"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_start" />
-
-    <TextView
         android:id="@+id/txFocus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Focus"
-        android:textSize="60dp"
-        android:fontFamily="@font/ZCOOL"
+        android:fontFamily="monospace"
+        android:text="@string/txfocus"
+        android:textSize="60sp"
         app:layout_constraintBottom_toTopOf="@+id/button_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txstart"
+        android:textSize = "20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/button_start"
+        app:layout_constraintEnd_toEndOf="@+id/button_start"
+        app:layout_constraintStart_toStartOf="@+id/button_start"
+        app:layout_constraintTop_toTopOf="@+id/button_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
