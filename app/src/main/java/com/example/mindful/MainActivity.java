@@ -1,12 +1,9 @@
 package com.example.mindful;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.CountDownTimer;
 import android.os.Bundle;
-import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.text.style.BackgroundColorSpan;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,7 +15,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     //hard coded for now
-    long millisInFuture = 60000;
+    long millisInFuture = 6000;
 
     Random r = new Random();
 
@@ -28,15 +25,17 @@ public class MainActivity extends AppCompatActivity {
     TextView txStartStop;
 
     CountDownTimer timer;
-    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-    boolean timerRunning;
+    boolean timerRunning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Vibrator vibrate = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
+        txFocus = findViewById(R.id.txFocus);
+        txStartStop = findViewById(R.id.txStart);
 
         btStartStop = findViewById(R.id.button_start);
         btStartStop.setOnClickListener(new View.OnClickListener()
@@ -49,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
                     //modifier between 1-10
                     double modifier = millisInFuture;
                     modifier *= (double)r.nextInt(20) /10;
-                    startTimer((long)modifier);
+                    startTimer((long)modifier, vibrate);
                 }
             }
         });
 
     }
 
-    protected void startTimer(long modifier){
+    protected void startTimer(long modifier, Vibrator v){
         startUpdate();
         timerRunning = true;
         new CountDownTimer(modifier, 1000) {
@@ -66,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFinish() {
+                v.vibrate(2000);
                 timerRunning = false;
                 stopUpdate();
             }
@@ -73,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void stopTimer(){
-
         stopUpdate();
     }
 
@@ -86,6 +85,4 @@ public class MainActivity extends AppCompatActivity {
         txFocus.setText("Focus");
         txStartStop.setText("Start");
     }
-
-
 }

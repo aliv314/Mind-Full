@@ -29,6 +29,7 @@
         android:fontFamily="@font/zcool"
         android:text="@string/txfocus"
         android:textSize="60sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/button_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
